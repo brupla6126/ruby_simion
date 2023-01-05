@@ -1,0 +1,11 @@
+# See https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#example-of-a-codeowners-file-1
+
+# Platform
+.github/ @brupla6126
+.rubocop.yml @brupla6126
+.rubocop_todo.yml @brupla6126
+.rubocop_exclusion.yml @brupla6126
+.rubocop @brupla6126
+
+# CI
+.github/workflows @brupla6126

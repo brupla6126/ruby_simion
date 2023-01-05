@@ -1,0 +1,32 @@
+name: "Run tests"
+env:
+  BUNDLE_WITHOUT: production:staging
+  TZ: America/Toronto
+on: push
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  rubocop:
+    name: "Rubocop"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Rubocop
+        run: bundle exec rubocop -c .rubocop_exclusions.yml --fail_level convention --display-only-fail-level-offenses
+  rspec:
+    runs-on: ubuntu-latest
+    name: RSpec tests
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+    - name: Run the specs
+      run: bundle exec rspec spec/

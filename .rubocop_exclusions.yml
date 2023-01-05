@@ -1,0 +1,13 @@
+# This configuration does exclude known offenders
+# To generate .rubocop_todo.yml run:
+#   rubocop -c .rubocop_exclusions.yml --auto-gen-config --auto-gen-only-exclude --exclude-limit 1000
+
+require:
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-rspec
+  - rubocop-thread_safety
+
+inherit_from:
+  - .rubocop_todo.yml
+  - .rubocop.yml
